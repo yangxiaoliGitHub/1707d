@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    nav {
+      display: flex;
+      line-height: 50px;
+      width: 300px;
+      border: 1px solid #ccc;
+    }
+
+    nav span {
+      flex: 1;
+      text-align: center;
+    }
+
+    nav span.active {
+      color: red;
+    }
+
+    .cont {
+      /* text-align: center; */
+      line-height: 50px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <nav>
+        <!-- :class="curIndex==index?'active':''"  -->
+      <span 
+      v-for="(val,index) in list" 
+      :class="{active:curIndex==index}" 
+      @click="changTab(index)">
+        {{val.tit}}
+      </span>
+    </nav>
+    <div class="cont">{{list[curIndex].cont}}</div>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      methods: {
+        changTab(index) {
+           this.curIndex = index;
+        }
+      },
+      data: {
+        curIndex: 0,
+        list: [{
+          tit: "tab1",
+          cont: "cont1"
+        }, {
+          tit: "tab2",
+          cont: "cont2"
+        }, {
+          tit: "tab2",
+          cont: "cont2"
+        }]
+      }
+    })
+  </script>
+</body>
+
+</html>

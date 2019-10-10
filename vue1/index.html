@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <script src=".\node_modules\vue\dist\vue.js"></script> -->
+</head>
+
+<body>
+  <div id="app">
+    <!-- 小胡子语法 moustache 表达式 可以放赋值 取值子三元 -->
+    {{msg}}
+    {{msg==="八维1707D"?1:0}}
+    <!-- 表单元素 input checkbox radio select textarea  -->
+    <input type="text" v-model="msg">
+    <div v-text="msg"></div>
+    <div v-once>
+      {{msg}}
+    </div>
+    <p v-html="p"></p>
+    <input type="text" v-model="num">
+    <p>成绩if-else-if
+      <span v-if="num>=90">优秀</span>
+      <span v-else-if="num>=60">及格</span>
+      <span v-else="num<=60">啥都不会</span>
+    </p>
+    <p>成绩 v-show
+      <span v-show="num>=90">优秀</span>
+      <span v-show="num>=60 && num<90">及格</span>
+      <span v-show="num<60">啥都不会</span>
+    </p>
+    <ul>
+      <li v-for="(val,i) in song">
+        {{val}}-{{i}}
+      </li>
+    </ul>
+    <ul>
+      <li v-for="(val,i) in fruits">
+        {{i+1}} {{val.tit}}
+        <ul>
+          <li v-for="(val,childI) in  val.color">
+            {{i+1}}.{{childI+1}} {{val}}
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul>
+      <li v-for="(val,key,index) in person">
+        {{val}}
+        {{key}}
+        {{index}}
+      </li>
+    </ul>
+
+    <ul>
+      <li v-for="(val,index) in 'person'">
+        {{val}}
+        {{index}}
+      </li>
+    </ul>
+    <!-- <div onclick = fn()>点我呀</div> -->
+    <div v-on:click = "clickMe($event)">点我呀</div>
+    <a :href="url">点击百度跳转</a>
+  </div>
+  <script src=".\node_modules\vue\dist\vue.js"></script>
+  <script>
+    // function fn(){
+    //   alert(1)
+    // }
+
+
+
+    let vm = new Vue({
+      el: "#app", //告诉vue管理那个部分
+      methods:{
+        clickMe(e){
+          console.log(e)
+          alert(1)
+        }
+      },
+      data: { //data里面的数据 被vm所代理 vm.msg
+        msg: "八维1707D",
+        p: "<h1>百度</h1>",
+        num: 60,
+        song: ['刚好遇见你', '爱我别走', '后来', '套马杆'],
+        fruits: [{
+          tit: "苹果",
+          color: ["red", "green", "yello"]
+        }, {
+          tit: "香蕉",
+          color: ["green", "yello"]
+        }, {
+          tit: "西瓜",
+          color: ["red", "pink", "yello"]
+        }],
+        person: {
+          name: '张三',
+          age: '12',
+          sex: '女'
+        },
+        url:'http://www.baidu.com'
+      }
+    })
+  </script>
+</body>
+
+</html>

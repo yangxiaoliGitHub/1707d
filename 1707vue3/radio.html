@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- // cdn 引入 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- //单选  v-model  取值 value -->
+    <input type="radio" value="男" v-model="sex">男
+    <input type="radio" value="女" v-model="sex">女
+
+    {{sex}}
+
+    <br>
+    <br>
+    <!-- //多选  v-model  取值 true/false-->
+    <input type="checkbox" v-model="isagree">同意协议
+    <br>
+    <br>
+     <!-- //多选  v-model  取值 value-->
+    <!-- <input type="checkbox" value="苹果"  v-model="fruits">苹果
+    <input type="checkbox" value="1"  v-model="fruits">苹果1
+    <input type="checkbox" value="2"  v-model="fruits">苹果2
+    <input type="checkbox" value="3"  v-model="fruits">苹果3
+    <input type="checkbox" value="苹果4"  v-model="fruits">苹果4 -->
+
+
+
+
+    {{fruits}}
+  </div>  
+
+
+
+
+  <script>
+   const vm = new Vue({
+    el:"#app",
+    data:{
+      sex:"男",
+      isagree:true,
+      fruits:[],
+      list:[
+        {
+          cont:"苹果111",
+          state:false
+        },{
+          cont:"苹果222",
+          state:false
+        },{
+          cont:"苹果333",
+          state:false
+        },{
+          cont:"苹果444",
+          state:false
+        }
+      ]
+
+    }
+
+
+
+
+   })
+
+  //  vm.$mount("#app")  //管控范围  挂载元素
+  </script>
+</body>
+
+</html>

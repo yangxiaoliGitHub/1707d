@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 使用组件 -->
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+
+
+  </div>
+
+  <!-- <div id="root">
+      <cpn></cpn>
+  </div> -->
+
+  <!-- 定义组件 -->
+  <template id="cpn">
+    <div>
+      <h2>班级号:{{classroom}}</h2>
+      <p>班级的班长 二狗子</p>
+      <p>班级 的内容 哈哈哈</p>
+    </div>
+  </template>
+
+  <script>
+    // 全局组件  cpn1
+    // Vue.component("cpn1",{
+    //   template:"#cpn"
+    // })
+
+    const vm = new Vue({
+      el: "#app",
+      data:{
+
+      },
+      components: {
+        // //局部   注册组件  cpn
+        cpn: { //注册的组件名称
+          template: "#cpn",
+          data(){
+            return {
+              classroom:"1707D"
+            }
+          }
+        }
+      }
+
+    })
+
+    new Vue({
+      el: "#root"
+    })
+  </script>
+</body>
+
+</html>

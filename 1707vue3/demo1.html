@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- // cdn 引入 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{msg}} 
+    {{msg1}}
+    <p v-text="msg"></p>
+    <p v-html="p"></p>
+
+    <!-- 双向绑定 -->
+      <input type="text" v-model="msg">
+      {{msg}} 
+     
+      <p v-once>{{msg}}</p>
+
+    <ul>
+      <li v-for="(item,index) in msg1">{{item}}{{index}}</li>
+    </ul>
+
+    <!-- {{p}} -->
+
+
+    <p v-if="age<=18">少年</p>
+    <p v-else-if="age>18&&age<=65">青年</p>
+    <p v-else-if="age>65&&age<=80">中年</p>
+    <p v-else>老年</p>
+
+
+    <p v-show="age<=18">少年</p>
+    <p v-show="age>18&&age<=65">青年</p>
+    <p v-show="age>65&&age<=80">中年</p>
+    <p v-show="age>80">老年</p>
+
+
+<a v-bind:href="url">百度一下</a>
+<a :href="url">百度一下</a>
+
+
+<button v-on:click= "fn">点我啊</button>
+<button v-on:click= "fn1(1,$event)">点我啊</button>
+<button @click= "fn1(1,$event)">点我啊</button>
+  </div>
+
+18  少年   65 青年   80 中年 100 老年
+          
+  <script>
+    const vm = new Vue({
+      el:"#app",   //vue管控
+      data:{
+        msg:"1707D",   //实例  this.msg   vm.msg
+        msg1:[1,2,3,4],   
+        p:"<h2>sdfsfsdf</h2>",
+        age:18,
+        url:"https://www.baidu.com/"
+
+      },
+      methods:{
+        fn(e){
+          console.log(e)
+          alert(1)
+        },
+        fn1(a,e){
+          console.log(a,e)
+          alert(1)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

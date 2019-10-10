@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="checkbox" v-model="isagree">同意
+    {{isagree}}
+
+    <input type="checkbox" value="苹果" v-model="fruits">苹果
+    <input type="checkbox" value="苹果1" v-model="fruits">苹果1
+    <input type="checkbox" value="苹果2" v-model="fruits">苹果2
+    <input type="checkbox" value="苹果3" v-model="fruits">苹果3
+    {{fruits}}
+
+    <br>
+    <br>
+
+    <label for="" v-for="item in list">
+        <input type="checkbox" :value="item" v-model="fruits">{{item}}
+    </label>
+    <h2>{{fruits}}</h2>
+
+  </div>
+
+
+
+
+  <script>
+    new Vue({
+      el: "#app",
+      data:{
+        isagree:true,
+        fruits:[],
+        list:["苹果1","苹果2","苹果3","苹果4"],
+
+      }
+    })
+  </script>
+</body>
+
+</html>

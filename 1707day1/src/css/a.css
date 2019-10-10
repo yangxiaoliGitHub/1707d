@@ -1,0 +1,9 @@
+div {
+  color: black;
+  font-size: 40px;
+  background: url("../img/a.png");
+}
+
+div a {
+  color: blanchedalmond;
+}

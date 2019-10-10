@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="checkbox" v-model="all" @change = "checkAll">全选
+
+    <br>
+    <br>
+
+    <label for="" v-for="item in list">
+        <input type="checkbox" :value="item.cont" v-model="item.state" @change="checkFn">{{item.cont}}
+    </label>
+
+  </div>
+
+
+
+
+  <script>
+    new Vue({
+      el: "#app",
+      methods:{
+        checkAll(){
+          this.list.forEach(item=>item.state=this.all) 
+        },
+        checkFn(){
+          this.all = this.list.every(item=>item.state)
+        }
+      },
+      data:{
+        all:false,
+        list:[{
+          cont:"苹果1",
+          state:false
+        },{
+          cont:"苹果2",
+          state:false
+        },{
+          cont:"苹果3",
+          state:false
+        },{
+          cont:"苹果4",
+          state:false
+        }],
+
+      }
+    })
+  </script>
+</body>
+
+</html>

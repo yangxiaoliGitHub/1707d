@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="msg">
+    <br>
+    {{count}}
+    <button @click="count++">+</button>
+    <p>总价</p>
+    {{total()}}
+    {{totalC}}
+  </div>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        count: 1,
+        msg: "1707"
+      },
+      methods: {
+        //页面渲染 数据变化 页面才会重新渲染
+        total() {
+          console.log("countFn")
+          return this.count * 10
+        }
+      },
+      //计算属性   缓存 此时的计算数据没有更改 即使页面刷新 执行  走缓存
+      computed: {
+        // totalC: {
+        //   get() { //获取
+        //     console.log("count")
+        //     return this.count * 10
+        //   },
+        //   set() { //设置
+
+        //   }
+        // }
+ 
+        totalC(){  //属性 只调用了get方法  缓存机制  
+          console.log("countC")
+          return this.count *10
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

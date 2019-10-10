@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{count}}
+    {{price | fixed(2)}}
+    <button @click="count++">+</button>
+    {{total | fixed(3)}}
+  </div>
+  <script>
+    // firstname（hao）  +midname（di）+ lastname(h)    = "huang hao  di "
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        count: 1,
+        price:21412.441241241,
+        msg: "1707"
+      },
+      filters: {//管道 过滤器
+        //val 管道符前面控制的数据   n 方法传递的参数
+        fixed(total,n){
+          console.log(total,n)
+          return total.toFixed(n)
+        }
+      },
+      //计算属性   缓存 此时的计算数据没有更改 即使页面刷新 执行  走缓存
+      computed: {
+        total() {
+          return this.count * 8.934567
+        }
+
+        // total: {
+        //   get() { //获取
+        //     console.log("count")
+        //     return this.count * 10
+        //   },
+        //   set() { //设置
+
+        //   }
+        // }
+
+        // total:{
+        //   get(){
+        //     return this.count*10
+        //   }
+        // }
+
+
+
+      }
+    })
+  </script>
+</body>
+
+</html>

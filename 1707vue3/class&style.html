@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    nav {
+      display: flex;
+      line-height: 40px;
+    }
+
+    nav span {
+      flex: 1;
+      text-align: center;
+    }
+
+    nav span.active {
+      color: red
+    }
+  </style>
+  <!-- // cdn 引入 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- :class = "[box,box1][1]" -->
+    <nav>
+      <span v-for="item in list" 
+      :class="{active:false,box:box,box1}"
+      :style="[box,box1]">{{item.tit}}</span>
+    </nav>
+    <div>cont</div>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        box: {
+          color: "red",
+          background: "#fff"
+        },
+        box1: {
+          display:"flex"
+        },
+        list: [{
+          tit: "左",
+          cont: "就发士大夫艰123123苦撒旦"
+        }, {
+          tit: "右",
+          cont: "就发士大夫312312艰苦撒旦"
+        }]
+      }
+
+
+    })
+  </script>
+</body>
+
+</html>

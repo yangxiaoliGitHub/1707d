@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+
+  </div>
+
+  <div id="root">
+    <cpn></cpn>
+    <ccpn></ccpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h1>班级号{{banji}}</h1>
+      <p>班级口号 {{kouhao}}</p>
+      <p> 班级内容 哈哈哈</p>
+    </div>
+  </template>
+
+  <template id="ccpn">
+      <div>
+        <h1>班级号13123</h1>
+        <p>班级口号123123123</p>
+        <p> 班级内容 呵呵呵</p>
+      </div>
+    </template>
+
+
+  <script>
+    Vue.component("cpn", {
+      template: "#cpn",
+      data() {
+        return {
+          banji: "1707D",
+          kouhao: "受到激发函数的房间函数的积分",
+          cont: "哈哈哈"
+        }
+      }
+    })
+    new Vue({
+      el: "#app",
+      data: {
+        title: "1234234234"
+      },
+      components: {
+       ccpn:{
+        template:"#ccpn"
+       }
+      }
+    })
+
+    new Vue({
+      el: "#root",
+      data: {
+        title: "1234234234"
+
+      }
+    })
+  </script>
+</body>
+
+</html>

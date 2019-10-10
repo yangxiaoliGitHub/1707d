@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- mustache   小胡子语法 变量 表达式 赋值  三元-->
+    {{classroom}}
+    {{classroom=== "1707D"?1:0}}
+    <!-- //指令  标签的行间属性 v-开头 放变量 -->
+    <!-- v-text 解决了{{}}闪烁问题 -->
+    <p v-text="classroom" class="active"></p>
+    <!-- 表单类型 input text  checkbox radio select  textarea -->
+    <!-- 表单元素  添加vue指令  默认属性失效 -->
+    <input type="text" v-model="classroom">
+
+    <!-- v-once 只渲染一次 -->
+    <div v-once>
+      {{classroom}}
+    </div>
+    <!-- 指令 解析元素 -->
+    <div v-html="p"></div>
+
+    <!-- v-if v-else-if v-else 这些条件判断指令 必须紧挨使用 -->
+    <p> 1707D成绩统计
+      <input type="text" v-model="num">
+      <span v-if="num>=90">及格</span>
+      <!-- <div >127184</div> -->
+      <span v-else-if="num>=80">加吧劲吧 兄弟</span>
+      <span v-else="num<80">不救了 自己体会吧 下个月再见</span>
+    </p>
+
+    <!-- v-show 显示隐藏 -->
+    <p> 1707D成绩统计 v-show
+      <input type="text" v-model="num">
+      <span v-show="num>=90">及格</span>
+      <span v-show="num>=80 && num<90">加吧劲吧 兄弟</span>
+      <span v-show="num<80">不救了 自己体会吧 下个月再见</span>
+    </p>
+
+
+     <!-- v-for循环 那个标签 需要循环 就把v-for放在哪 -->
+    <ul>
+      <li v-for="(item,index) in songs">
+          {{index+1}} {{item}}
+      </li>
+    </ul>
+    <!-- 遍历数组 -->
+    <ul>
+      <li v-for="(val,index) in fruits">
+        {{index+1}}{{val.tit}}
+        <ul>
+          <li v-for="(val,childIndex) in val.color">
+            {{index+1}}.{{childIndex+1}}{{val}}
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+      <!-- 遍历对象 -->
+    <span v-for="(val,key,index) in person">
+      {{val}} {{key}}  {{index}}
+    </span>
+
+    <!-- 遍历字符串 -->
+    <div v-for="(val,index) in 'person'">
+        {{val}}  {{index}}
+      </div>
+
+      <!-- v-bind  把默认属性 动态属性 -->
+      <a v-bind:href="url">百度一下</a>
+      <a :href="url">百度一下</a>
+
+  </div>
+
+  <!-- 1 苹果
+    1.1 red
+    1.2 green -->
+  <script src=".\node_modules\vue\dist\vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: "#app", //vue管控的范围
+      data: { //存放数据
+        url:"http://www.baidu.com",
+        classroom: "1707D", //data里的数据会自动挂载在vm上  vm.classroom
+        p: "<h1>hello 1707D</h1>",
+        num: 60,
+        songs:["甜蜜蜜","单身情歌","大画家","爱的魔法","骑上我心爱的小蘑菇"],
+        fruits:[
+          {
+            tit:"苹果",
+            color:["red","green","yellow"]
+          }, {
+            tit:"香蕉",
+            color:["green","yellow"]
+          }, {
+            tit:"西瓜",
+            color:["red","pink"]
+          }
+        ],
+        person:{
+          name:"Zs",
+          age:18,
+          tel:21124
+        }  
+
+      }
+    })
+  </script>
+
+</body>
+
+</html>

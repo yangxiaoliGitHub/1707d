@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- // cdn 引入 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="checkbox" v-model="allCheck" @change="checkAll">全选
+    <br>
+    <br>
+    <label for="" v-for="item in list">
+      <input @change="checkOne" type="checkbox" :value="item.cont" v-model="item.state">{{item.cont}}
+    </label>
+    
+  </div>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        allCheck: false,
+        list: [{
+          cont: "苹果111",
+          state: true
+        }, {
+          cont: "苹果222",
+          state: false
+        }, {
+          cont: "苹果333",
+          state: false
+        }, {
+          cont: "苹果444",
+          state: false
+        }]
+      },
+      methods: {
+        checkAll() {
+          //每一个元素的选中状态 等于 全选的状态
+          this.list.forEach(item => item.state = this.allCheck)
+        },
+        checkOne() {
+          //全选的状态 必须满足 每一个元素都选中 全选自动选中 否则 全选false
+          this.allCheck = this.list.every(item => item.state)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

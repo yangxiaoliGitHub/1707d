@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="val" @keyup.13="add">
+    <ul>
+      <li v-for="(item,index) in arr">
+        {{item}}
+        <button @click="remove(index)">删除</button>
+      </li>
+    </ul>
+  </div>
+  
+  <script>
+     let vm = new Vue({
+       el:"#app",
+       methods:{
+         add(){
+           this.arr.unshift(this.val);
+           this.val=""
+         },
+         remove(index){
+           this.arr = this.arr.filter((item,i)=>i!=index)
+         }
+       },
+       data:{//数据
+          val:"",
+          arr:[]
+       }
+     })
+  </script>
+</body>
+</html>
